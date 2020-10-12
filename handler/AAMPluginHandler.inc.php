@@ -14,7 +14,10 @@ class AAMPluginHandler extends Handler
 	private const DOI_PREFIX = 'https://doi.org/';
 	private const PA_BASE_URL = 'https://zpidlx84.zpid.de';
 
-
+	/**
+	 * @param array $args
+	 * @param PKPRequest $request
+	 */
 	function index($args, $request)
 	{
 		$context = $request->getContext();
@@ -23,31 +26,36 @@ class AAMPluginHandler extends Handler
 		$contextId = ($context == null) ? 0 : $context->getId();
 		$pubIdPrefix = $this->_buildDoiPrefix($context);
 		$aamItems = [];
-		if (isset($pubIdPrefix)) {
-			$submissionsIterator = Services::get('submission')->getMany(
-				[
-					'contextId' => $contextId,
-					'status' => self::STATUS_QUEUED,
-					'stageIds' => [self::WORKFLOW_STAGE_ID_EDITING, self::WORKFLOW_STAGE_ID_PRODUCTION],
-				]
-			);
-			foreach ($submissionsIterator as $submission) {
-				$paItem = $this->_searchPsychArchivesItemByIsVersionOf('https://doi.org/10.5964/meth.2807');
-				if (isset($paItem) && is_array($paItem) && sizeof($paItem) > 0) {
-					$paItemLink = self::PA_BASE_URL.'/handle/'.$paItem[0]['handle'];
-				}
-				$aamItems[] = [
-					'title' => $submission->getTitle($submission->getLocale()),
-					'authors' => $submission->getAuthorString(),
-					'linkToPsychArchives' => isset($paItemLink) ? $paItemLink : null,
-				];
+		$submissionsIterator = Services::get('submission')->getMany(
+			[
+				'contextId' => $contextId,
+				'status' => self::STATUS_QUEUED,
+				'stageIds' => [self::WORKFLOW_STAGE_ID_EDITING, self::WORKFLOW_STAGE_ID_PRODUCTION],
+			]
+		);
+		foreach ($submissionsIterator as $submission) {
+			if (isset($pubIdPrefix)) {
+				$paItem = $this->_searchPsychArchivesItemByIsVersionOf($pubIdPrefix.$submission->getId());
+				//$paItem = $this->_searchPsychArchivesItemByIsVersionOf('https://doi.org/10.5964/meth.2807');
 			}
+			if (isset($paItem) && is_array($paItem) && sizeof($paItem) > 0) {
+				$paItemLink = self::PA_BASE_URL.'/handle/'.$paItem[0]['handle'];
+			}
+			$aamItems[] = [
+				'title' => $submission->getTitle($submission->getLocale()),
+				'authors' => $submission->getAuthorString(),
+				'linkToPsychArchives' => isset($paItemLink) ? $paItemLink : null,
+			];
 		}
 		$templateMgr->assign('aamItems', $aamItems);
 
 		return $templateMgr->display($plugin->getTemplateResource('aamList.tpl'));
 	}
 
+	/**
+	 * @param $context
+	 * @return string|null
+	 */
 	private function _buildDoiPrefix($context)
 	{
 		$pubIdPrefix = null;
@@ -65,6 +73,10 @@ class AAMPluginHandler extends Handler
 	}
 
 
+	/**
+	 * @param $relation
+	 * @return mixed|null
+	 */
 	private function _searchPsychArchivesItemByIsVersionOf($relation)
 	{
 		try {
