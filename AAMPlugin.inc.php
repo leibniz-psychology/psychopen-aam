@@ -37,10 +37,30 @@ class AAMPlugin extends GenericPlugin
 	{
 		$success = parent::register($category, $path);
 		if ($success && $this->getEnabled()) {
-			//HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
+			HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
 		}
 
 		return $success;
+	}
+
+	/**
+	 * Loads Handler for login, registration, sign-out and the plugin specific urls.
+	 * Adds JavaScript and Style files to the template.
+	 *
+	 * @param $hookName
+	 * @param $args
+	 * @return false
+	 */
+	public function callbackLoadHandler($hookName, $args)
+	{
+		$page = $args[0];
+		define('AAM_PLUGIN_NAME', $this->getName());
+		switch ("$page") {
+			case 'aam':
+				define('HANDLER_CLASS', 'AAMPluginHandler');
+				$args[2] = $this->getPluginPath().'/handler/AAMPluginHandler.inc.php';
+				break;
+		}
 	}
 
 }
