@@ -1,7 +1,5 @@
 <?php
 
-use GuzzleHttp\Client;
-
 import('classes.handler.Handler');
 
 
@@ -24,7 +22,6 @@ class AAMPluginHandler extends Handler
 		$templateMgr = TemplateManager::getManager($request);
 		$plugin = PluginRegistry::getPlugin('generic', AAM_PLUGIN_NAME);
 		$contextId = ($context == null) ? 0 : $context->getId();
-		$pubIdPrefix = $this->_buildDoiPrefix($context);
 		$aamItems = [];
 		$submissionsIterator = Services::get('submission')->getMany(
 			[
@@ -33,6 +30,7 @@ class AAMPluginHandler extends Handler
 				'stageIds' => [self::WORKFLOW_STAGE_ID_EDITING, self::WORKFLOW_STAGE_ID_PRODUCTION],
 			]
 		);
+		$pubIdPrefix = $this->_buildDoiPrefix($context);
 		foreach ($submissionsIterator as $submission) {
 			if (isset($pubIdPrefix)) {
 				$paItem = $this->_searchPsychArchivesItemByIsVersionOf($pubIdPrefix.$submission->getId());
