@@ -10,7 +10,7 @@ class AAMPluginHandler extends Handler
 	private const WORKFLOW_STAGE_ID_EDITING = 4;
 	private const WORKFLOW_STAGE_ID_PRODUCTION = 5;
 	private const DOI_PREFIX = 'https://doi.org/';
-	private const PA_BASE_URL = 'https://zpidlx84.zpid.de';
+	private const PA_BASE_URL = 'https://www.psycharchives.org';
 
 	/**
 	 * @param array $args
@@ -23,27 +23,26 @@ class AAMPluginHandler extends Handler
 		$plugin = PluginRegistry::getPlugin('generic', AAM_PLUGIN_NAME);
 		$contextId = ($context == null) ? 0 : $context->getId();
 		$aamItems = [];
-		$submissionsIterator = Services::get('submission')->getMany(
-			[
-				'contextId' => $contextId,
-				'status' => self::STATUS_QUEUED,
-				'stageIds' => [self::WORKFLOW_STAGE_ID_EDITING, self::WORKFLOW_STAGE_ID_PRODUCTION],
-			]
-		);
+		$submissionDao = Application::getSubmissionDAO();
+		$submissions = $submissionDao->getByContextId($contextId);
 		$pubIdPrefix = $this->_buildDoiPrefix($context);
-		foreach ($submissionsIterator as $submission) {
-			if (isset($pubIdPrefix)) {
-				$paItem = $this->_searchPsychArchivesItemByIsVersionOf($pubIdPrefix.$submission->getId());
-				//$paItem = $this->_searchPsychArchivesItemByIsVersionOf('https://doi.org/10.5964/meth.2807');
+		while ($submission = $submissions->next()) {
+			if ($submission->getStatus() == self::STATUS_QUEUED
+				&& ($submission->getStageId() == self::WORKFLOW_STAGE_ID_EDITING
+					|| $submission->getStageId() == self::WORKFLOW_STAGE_ID_PRODUCTION)) {
+				if (isset($pubIdPrefix)) {
+					$paItem = $this->_searchPsychArchivesItemByIsVersionOf($pubIdPrefix.$submission->getId());
+					//$paItem = $this->_searchPsychArchivesItemByIsVersionOf('https://doi.org/10.5964/meth.2807');
+				}
+				if (isset($paItem) && is_array($paItem) && sizeof($paItem) > 0) {
+					$paItemLink = self::PA_BASE_URL.'/handle/'.$paItem[0]['handle'];
+				}
+				$aamItems[] = [
+					'title' => $submission->getTitle($submission->getLocale()),
+					'authors' => $submission->getAuthorString(),
+					'linkToPsychArchives' => isset($paItemLink) ? $paItemLink : null,
+				];
 			}
-			if (isset($paItem) && is_array($paItem) && sizeof($paItem) > 0) {
-				$paItemLink = self::PA_BASE_URL.'/handle/'.$paItem[0]['handle'];
-			}
-			$aamItems[] = [
-				'title' => $submission->getTitle($submission->getLocale()),
-				'authors' => $submission->getAuthorString(),
-				'linkToPsychArchives' => isset($paItemLink) ? $paItemLink : null,
-			];
 		}
 		$templateMgr->assign('aamItems', $aamItems);
 
@@ -66,7 +65,6 @@ class AAMPluginHandler extends Handler
 				$pubIdPrefix = self::DOI_PREFIX.$doiJournalPrefix.'/'.$contextAcronym.'.';
 			}
 		}
-
 		return $pubIdPrefix;
 	}
 
