@@ -10,7 +10,7 @@ class AAMPluginHandler extends Handler
 	private const WORKFLOW_STAGE_ID_EDITING = 4;
 	private const WORKFLOW_STAGE_ID_PRODUCTION = 5;
 	private const DOI_PREFIX = 'https://doi.org/';
-	private const PA_BASE_URL = 'https://zpidlx84.zpid.de';
+	private const PA_BASE_URL = 'https://www.psycharchives.org';
 
 	/**
 	 * @param array $args
