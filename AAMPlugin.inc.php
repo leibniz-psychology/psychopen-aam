@@ -57,6 +57,9 @@ class AAMPlugin extends GenericPlugin
 		define('AAM_PLUGIN_NAME', $this->getName());
 		switch ("$page") {
 			case 'aam':
+				$request = Application::get()->getRequest();
+				$templateMgr = TemplateManager::getManager($request);
+				$templateMgr->addJavaScript('AAMPluginScript', $request->getBaseUrl().'/'.$this->getPluginPath().'/js/aam.js');
 				define('HANDLER_CLASS', 'AAMPluginHandler');
 				$args[2] = $this->getPluginPath().'/handler/AAMPluginHandler.inc.php';
 				break;

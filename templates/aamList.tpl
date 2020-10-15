@@ -9,6 +9,7 @@
 		<div class="cmp_notification info">
 			{translate key="plugins.generic.aam.help.content" journalName=$displayPageHeaderTitle|escape}
 		</div>
+		<input type="hidden" value="" id="queryPath"/>
 		<ul class="cmp_article_list articles obj_article_summary">
 			{foreach from=$aamItems item=aamItem}
 				<li>
@@ -22,10 +23,11 @@
 							</div>
 						</div>
 					</div>
-					{if isset($aamItem['linkToPsychArchives']) && !empty($aamItem['linkToPsychArchives'])}
-						<ul class="galleys_links">
+					{if isset($aamItem['preliminaryDOI']) && !empty($aamItem['preliminaryDOI'])}
+						<ul class="galleys_links pa-link-query" style="display: none" data-url="{url page="aam" op="getPsychArchivesLink"}"
+						    data-doi="{$aamItem['preliminaryDOI']}">
 							<li>
-								<a class="obj_galley_link" href="{$aamItem['linkToPsychArchives']}" target="_blank" rel="noreferrer">
+								<a class="obj_galley_link" href="" target="_blank" rel="noreferrer">
 									{translate key="plugins.generic.aam.link.pa"}
 								</a>
 							</li>
