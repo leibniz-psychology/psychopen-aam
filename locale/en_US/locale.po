@@ -11,7 +11,7 @@ msgid "plugins.generic.aam.headline"
 msgstr "Forthcoming Articles"
 
 msgid "plugins.generic.aam.help.no.content"
-msgstr "No accepted submission found in this journal."
+msgstr "No accepted but not yet published submission found in this journal."
 
 msgid "plugins.generic.aam.help.content"
 msgstr "Articles accepted for publication but not yet published in {$journalName}. Preview links indicate that a draft version (author accepted manuscript, AAM) is available."
