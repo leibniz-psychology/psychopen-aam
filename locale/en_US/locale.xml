@@ -9,7 +9,7 @@
   * Copyright (c) 2003-2019 John Willinsky
   * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
-  * ORCID Profile plugin localization strings
+  * AAM Profile plugin localization strings
   -->
 
 <locale name="en_US" full_name="U.S. English">
@@ -17,7 +17,7 @@
 	<message key="plugins.generic.aam.description"><![CDATA[This plugin show an overview of all accepted but not yet published articles.]]></message>
 	<message key="plugins.generic.aam.breadcrumb">Forthcoming Articles</message>
 	<message key="plugins.generic.aam.headline">Forthcoming Articles</message>
-	<message key="plugins.generic.aam.help.no.content">No accepted submission found in this journal.</message>
-	<message key="plugins.generic.aam.help.content">Articles accepted for publication but not yet published in {$journalName}. Preview links indicate that a draft version (author accepted manuscript, AAM) is available.</message>
-	<message key="plugins.generic.aam.link.pa">Accepted author version</message>
+	<message key="plugins.generic.aam.help.no.content">No accepted but not yet published submission found in this journal.</message>
+	<message key="plugins.generic.aam.help.content">Articles accepted for publication but not yet published in {$journalName}. Preview links (if any) indicate that a draft version (author accepted manuscript, AAM) is available.</message>
+	<message key="plugins.generic.aam.link.pa">Preview Accepted Author Version (via PsychArchives)</message>
 </locale>
