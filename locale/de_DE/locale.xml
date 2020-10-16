@@ -12,7 +12,7 @@
   * AAM plugin localization strings
   -->
 
-<locale name="en_US" full_name="U.S. English">
+<locale name="de_DE" full_name="Deutsch (Deutschland)">
 	<message key="plugins.generic.aam.name">Forthcoming Articles</message>
 	<message key="plugins.generic.aam.description"><![CDATA[This plugin show an overview of all accepted but not yet published articles.]]></message>
 	<message key="plugins.generic.aam.breadcrumb">Forthcoming Articles</message>
