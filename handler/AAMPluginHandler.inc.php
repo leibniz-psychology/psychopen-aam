@@ -2,7 +2,29 @@
 
 import('classes.handler.Handler');
 
-
+/**
+ * This file is part of Forthcoming Articles Plugin (https://github.com/leibniz-psychology/pkp-openid).
+ *
+ * Forthcoming Articles Plugin is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Forthcoming Articles Plugin is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Forthcoming Articles Plugin.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Copyright (c) 2020 Leibniz Institute for Psychology Information (https://leibniz-psychology.org/)
+ *
+ * @file plugins/generic/psychopen-aam/AAMPluginHandler.inc.php
+ * @ingroup plugins_generic_aam
+ * @brief Handler for Forthcoming Articles Plugin: shows aam page and has functions to receive PsychArchive Items vie REST API
+ *
+ */
 class AAMPluginHandler extends Handler
 {
 
@@ -13,6 +35,8 @@ class AAMPluginHandler extends Handler
 	private const PA_BASE_URL = 'https://www.psycharchives.org';
 
 	/**
+	 * This function displays the page that shows a list of all accepted but not yet published articles of a journal.
+	 *
 	 * @param array $args
 	 * @param PKPRequest $request
 	 */
@@ -44,6 +68,9 @@ class AAMPluginHandler extends Handler
 	}
 
 	/**
+	 * This function is called via JavaScript to load all available items links from PsychArchives.
+	 * If a link is availible, it will be shown besides the submission.
+	 *
 	 * @param $args
 	 * @param $request
 	 * @return mixed|null
@@ -81,6 +108,8 @@ class AAMPluginHandler extends Handler
 	}
 
 	/**
+	 * This function creates the DOI prefix for a submission, because at this time no DOI is provided by the OJS.
+	 *
 	 * @param $context
 	 * @return string|null
 	 */
