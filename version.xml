@@ -14,8 +14,8 @@
 <version>
 	<application>psychopen-aam</application>
 	<type>plugins.generic</type>
-	<release>3.2.0.1</release>
-	<date>2020-10-26</date>
+	<release>3.2.0.2</release>
+	<date>2021-01-22</date>
 	<lazy-load>1</lazy-load>
 	<class>AAMPlugin</class>
 </version>
