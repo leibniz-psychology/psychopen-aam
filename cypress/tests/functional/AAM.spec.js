@@ -1,10 +1,10 @@
-/* npx cypress open  --config integrationFolder=plugins/generic/openid/cypress/tests */
+/* eslint-disable */
+/* npx cypress open  --config integrationFolder=plugins/generic/psychopen-aam/cypress/tests */
 describe('OpenID plugin tests', function () {
 
 	it('Disable Forthcoming Articles Plugin', function () {
-		cy.login(Cypress.env("ojs_username"), Cypress.env("ojs_password"), Cypress.env("context"));
-		cy.get('ul[id="navigationPrimary"] a:contains("Settings")').click();
-		cy.get('ul[id="navigationPrimary"] a:contains("Website")').click();
+		cy.login('admin', 'admin', 'publicknowledge');
+		cy.get('nav[class="app__nav"] a:contains("Website")').click();
 		cy.get('button[id="plugins-button"]').click();
 		// disable plugin if enabled
 		cy.get('input[id^="select-cell-aamplugin-enabled"]')
@@ -18,17 +18,16 @@ describe('OpenID plugin tests', function () {
 	});
 
 	it('Enable Forthcoming Articles Plugin', function () {
-		cy.login(Cypress.env("ojs_username"), Cypress.env("ojs_password"), Cypress.env("context"));
-		cy.get('ul[id="navigationPrimary"] a:contains("Settings")').click();
-		cy.get('ul[id="navigationPrimary"] a:contains("Website")').click();
+		cy.login('admin', 'admin', 'publicknowledge');
+		cy.get('nav[class="app__nav"] a:contains("Website")').click();
 		cy.get('button[id="plugins-button"]').click();
 		// Find and enable the plugin
 		cy.get('input[id^="select-cell-aamplugin-enabled"]').click();
 		cy.get('div:contains(\'The plugin "Forthcoming Articles" has been enabled.\')');
 	});
 
-	it('Check OpenID Authentication Plugin Login Page', function () {
-		cy.visit('/index.php/' + Cypress.env("context") + '/aam');
+	it('Check AAM Page', function () {
+		cy.visit('/index.php/publicknowledge/aam');
 		cy.get('h1').contains('Forthcoming Articles');
 	});
 });
