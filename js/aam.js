@@ -13,9 +13,18 @@ document.querySelectorAll(".pa-link-query").forEach(itm => {
 		let link = data.content['paLink'];
 		if (link !== undefined && link !== null && link !== '') {
 			itm.querySelector('a').href = link;
-			itm.style.display = 'block';
+			itm.querySelector('.pa-link-query-result').style.display = 'block';
+		} else {
+			itm.querySelector('.pa-link-query-no-result').style.display = 'block';
 		}
 	}).catch(error => {
 		console.log(error);
 	});
 })
+
+$('a[data-toggle="tooltip"]').tooltip({
+	animated: 'fade',
+	placement: 'top',
+	trigger: 'click',
+	html: true,
+});

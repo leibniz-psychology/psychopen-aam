@@ -17,4 +17,7 @@ msgid "plugins.generic.aam.help.content"
 msgstr "Articles accepted for publication but not yet published in {$journalName}. Preview links (if any) indicate that a draft version (author accepted manuscript, AAM) is available."
 
 msgid "plugins.generic.aam.link.pa"
-msgstr "Preview Accepted Author Version (via PsychArchives)"
+msgstr "Author Accepted Manuscript"
+
+msgid "plugins.generic.aam.link.pa.pr"
+msgstr "Preview"

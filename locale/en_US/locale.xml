@@ -19,5 +19,6 @@
 	<message key="plugins.generic.aam.headline">Forthcoming Articles</message>
 	<message key="plugins.generic.aam.help.no.content">No accepted but not yet published submission found in this journal.</message>
 	<message key="plugins.generic.aam.help.content">Articles accepted for publication but not yet published in {$journalName}. Preview links (if any) indicate that a draft version (author accepted manuscript, AAM) is available.</message>
-	<message key="plugins.generic.aam.link.pa">Preview Accepted Author Version (via PsychArchives)</message>
+	<message key="plugins.generic.aam.link.pa">Author Accepted Manuscript</message>
+	<message key="plugins.generic.aam.link.pa.pr">Preview</message>
 </locale>
