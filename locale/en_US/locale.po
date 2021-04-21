@@ -2,7 +2,7 @@ msgid "plugins.generic.aam.name"
 msgstr "Forthcoming Articles"
 
 msgid "plugins.generic.aam.description"
-msgstr "This plugin show an overview of all accepted but not yet published articles"
+msgstr "This plugin show an overview of all accepted but not published articles"
 
 msgid "plugins.generic.aam.breadcrumb"
 msgstr "Forthcoming Articles"
@@ -11,10 +11,16 @@ msgid "plugins.generic.aam.headline"
 msgstr "Forthcoming Articles"
 
 msgid "plugins.generic.aam.help.no.content"
-msgstr "No accepted but not yet published submission found in this journal."
+msgstr "Currently there are no accepted but not yet published articles."
 
 msgid "plugins.generic.aam.help.content"
-msgstr "Articles accepted for publication but not yet published in {$journalName}. Preview links (if any) indicate that a draft version (author accepted manuscript, AAM) is available."
-
+msgstr "Articles below are \"in press\", i.e., accepted for publication in <em>{$journalName}</em> but not yet published. If authors did make their accepted version available via <a href=\"https://www.psycharchives.org/\" target=\"_blank\">PsychArchives</a> a link to the author accepted manuscript (AAM) version is provided."
+       
+msgid "plugins.generic.aam.help.submit"
+msgstr "<strong>@Authors:</strong> Do you want to provide early access to your research? Please <a href=\"https://www.psychopen.eu/AAM_Form.docx\">download and fill in this form</a> and send it along with your accepted manuscript to <a href=\"mailto:psycharchives-submission@leibniz-psychology.org\">psycharchives-submission@leibniz-psychology.org</a>."
+       
 msgid "plugins.generic.aam.link.pa"
-msgstr "Preview Accepted Author Version (via PsychArchives)"
+msgstr "Author Accepted Manuscript"
+
+msgid "plugins.generic.aam.link.pa.pr"
+msgstr "Preview"
