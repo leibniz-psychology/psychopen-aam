@@ -14,11 +14,12 @@
 
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.generic.aam.name">Forthcoming Articles</message>
-	<message key="plugins.generic.aam.description"><![CDATA[This plugin show an overview of all accepted but not yet published articles.]]></message>
+	<message key="plugins.generic.aam.description"><![CDATA[This plugin shows an overview of all accepted but not yet published articles.]]></message>
 	<message key="plugins.generic.aam.breadcrumb">Forthcoming Articles</message>
 	<message key="plugins.generic.aam.headline">Forthcoming Articles</message>
-	<message key="plugins.generic.aam.help.no.content">No accepted but not yet published submission found in this journal.</message>
-	<message key="plugins.generic.aam.help.content">Articles accepted for publication but not yet published in {$journalName}. Preview links (if any) indicate that a draft version (author accepted manuscript, AAM) is available.</message>
+	<message key="plugins.generic.aam.help.no.content">Currently there are no accepted but not yet published articles.</message>
+	<message key="plugins.generic.aam.help.content">Articles below are "in press", i.e., accepted for publication in <![CDATA[<em>]]>{$journalName}<![CDATA[</em>]]> but not yet published. If authors made their accepted version available via <![CDATA[<a href="https://www.psycharchives.org/" target="_blank">PsychArchives</a>]]> a link to the author accepted manuscript (AAM) version is provided.</message>
+	<message key="plugins.generic.aam.help.submit"><![CDATA[<strong>]]>@Authors:<![CDATA[</strong>]]> Do you want to provide early access to your research? Please <![CDATA[<a href="https://www.psychopen.eu/AAM_Form.docx"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;download and fill in this form</a>]]> and send it along with your accepted manuscript to <![CDATA[<a href="mailto:psycharchives-submission@leibniz-psychology.org">psycharchives-submission@leibniz-psychology.org</a>]]>.
 	<message key="plugins.generic.aam.link.pa">Author Accepted Manuscript</message>
 	<message key="plugins.generic.aam.link.pa.pr">Preview</message>
 </locale>
