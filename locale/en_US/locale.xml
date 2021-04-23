@@ -22,4 +22,6 @@
 	<message key="plugins.generic.aam.help.submit"><![CDATA[<strong>]]>@Authors:<![CDATA[</strong>]]> Do you want to provide early access to your research? Please <![CDATA[<a href="https://www.psychopen.eu/AAM_Form.docx"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;download and fill in this form</a>]]> and send it along with your accepted manuscript to <![CDATA[<a href="mailto:psycharchives-submission@leibniz-psychology.org">psycharchives-submission@leibniz-psychology.org</a>]]>.
 	<message key="plugins.generic.aam.link.pa">Author Accepted Manuscript</message>
 	<message key="plugins.generic.aam.link.pa.pr">Preview</message>
+	<message key="plugins.generic.aam.settings.ignored">Ignored Articles</message>
+	<message key="plugins.generic.aam.settings.ignored.desc">Enter the ids of all articles to be ignored in the AAM output, separated by ';' (e.g. 31;2344;2535)</message>
 </locale>
