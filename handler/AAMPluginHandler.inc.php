@@ -29,7 +29,7 @@ class AAMPluginHandler extends Handler
 		$ignoredArticle = $plugin->getSetting($contextId, 'ignoredArticle');
 		$ignoredIds = null;
 		if ($ignoredArticle) {
-			$ignoredIds = explode(';', $ignoredArticle);
+			$ignoredIds = explode(';', str_replace(' ', '', $ignoredArticle));
 		}
 		while ($submission = $submissions->next()) {
 			if (!isset($ignoredIds) || empty($ignoredIds) || !is_array($ignoredIds) ||
