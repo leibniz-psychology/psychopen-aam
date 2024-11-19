@@ -1,7 +1,5 @@
 # Forthcoming Articles Plugin for PsychOpen/OJS
 
-![CI Test](https://github.com/leibniz-psychology/psychopen-aam/workflows/CI%20Test/badge.svg?branch=main)
-
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/leibniz-psychology/psychopen-aam?include_prereleases&label=latest%20release)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/leibniz-psychology/psychopen-aam)
 ![GitHub](https://img.shields.io/github/license/leibniz-psychology/psychopen-aam)
